@@ -17,9 +17,7 @@ Crosshair studio for **Counter-Strike 2** with live preview, pro player configs,
 
 ## Live demo
 
-After deployment, the site will be available at:
-
-`https://<username>.github.io/crosshair_generator/`
+**https://aimsynccore.github.io/crosshair_generator/**
 
 ## Local development (web)
 
