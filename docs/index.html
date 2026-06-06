@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0d12" />
+    <title>CS2 Crosshair Studio</title>
+    <meta
+      name="description"
+      content="Build CS2 crosshairs with live preview, pro player configs, share codes, and autoexec generator."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="bg-glow bg-glow--left" aria-hidden="true"></div>
+    <div class="bg-glow bg-glow--right" aria-hidden="true"></div>
+
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true">
+            <span></span><span></span><span></span><span></span>
+          </div>
+          <div>
+            <p class="eyebrow">Counter-Strike 2</p>
+            <h1>Crosshair Studio</h1>
+            <p class="subtitle">
+              Design, preview, and export crosshairs — plus pro configs and a full autoexec builder.
+            </p>
+            <div class="feature-badges">
+              <span class="badge">Live preview</span>
+              <span class="badge">100+ pro crosshairs</span>
+              <span class="badge">autoexec.cfg</span>
+            </div>
+          </div>
+        </div>
+        <a
+          id="github-link"
+          class="github-link"
+          href="https://github.com/"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="View on GitHub"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path
+              d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.515.12-3.15 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.635.24 2.85.12 3.15.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.205 0 1.59-.015 2.88-.015 3.285 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12Z"
+            />
+          </svg>
+          GitHub
+        </a>
+      </div>
+    </header>
+
+    <div class="container nav-shell">
+      <nav class="main-tabs" aria-label="Main sections">
+        <button type="button" class="tab-btn is-active" data-tab="custom">
+          <span class="tab-label">Custom</span>
+          <span class="tab-desc">Editor</span>
+        </button>
+        <button type="button" class="tab-btn" data-tab="pro">
+          <span class="tab-label">Pro</span>
+          <span class="tab-desc">Crosshairs</span>
+        </button>
+        <button type="button" class="tab-btn" data-tab="autoexec">
+          <span class="tab-label">Autoexec</span>
+          <span class="tab-desc">Generator</span>
+        </button>
+      </nav>
+    </div>
+
+    <main id="main-layout" class="container layout">
+      <section id="panel-custom" class="panel controls-panel tab-panel is-active">
+        <div class="panel-header">
+          <div>
+            <p class="panel-eyebrow">Crosshair</p>
+            <h2>Settings</h2>
+          </div>
+          <button id="reset-btn" type="button" class="btn btn-ghost">Reset</button>
+        </div>
+
+        <div class="preset-row">
+          <span class="field-label">Quick presets</span>
+          <div id="presets" class="preset-list"></div>
+        </div>
+
+        <div class="control-grid">
+          <label class="field">
+            <span class="field-label">Style</span>
+            <select id="style" class="input">
+              <option value="0">0 — Classic Default</option>
+              <option value="1">1 — Classic Default Static</option>
+              <option value="2">2 — Classic</option>
+              <option value="3">3 — Classic Dynamic</option>
+              <option value="4" selected>4 — Classic Static</option>
+              <option value="5">5 — Legacy</option>
+            </select>
+          </label>
+
+          <label class="field">
+            <span class="field-label">Length (size)</span>
+            <input id="length" class="input-range" type="range" min="0" max="10" step="0.1" value="2.5" />
+          </label>
+
+          <label class="field">
+            <span class="field-label">Gap</span>
+            <input id="gap" class="input-range" type="range" min="-10" max="10" step="0.1" value="0" />
+          </label>
+
+          <label class="field">
+            <span class="field-label">Thickness</span>
+            <input id="thickness" class="input-range" type="range" min="0.1" max="3" step="0.1" value="0.5" />
+          </label>
+
+          <label class="field">
+            <span class="field-label">Outline thickness</span>
+            <input id="outline" class="input-range" type="range" min="0.1" max="3" step="0.1" value="1" />
+          </label>
+
+          <label class="field">
+            <span class="field-label">Alpha</span>
+            <input id="alpha" class="input-range" type="range" min="0" max="255" step="1" value="200" />
+          </label>
+
+          <label class="field">
+            <span class="field-label">Color preset</span>
+            <select id="color" class="input">
+              <option value="0">Red</option>
+              <option value="1" selected>Green</option>
+              <option value="2">Yellow</option>
+              <option value="3">Cyan</option>
+              <option value="4">Custom RGB</option>
+              <option value="5">Custom RGB (alt)</option>
+            </select>
+          </label>
+        </div>
+
+        <div id="rgb-group" class="control-grid rgb-grid" hidden>
+          <label class="field">
+            <span class="field-label">Red</span>
+            <input id="red" class="input-range" type="range" min="0" max="255" step="1" value="50" />
+          </label>
+          <label class="field">
+            <span class="field-label">Green</span>
+            <input id="green" class="input-range" type="range" min="0" max="255" step="1" value="250" />
+          </label>
+          <label class="field">
+            <span class="field-label">Blue</span>
+            <input id="blue" class="input-range" type="range" min="0" max="255" step="1" value="50" />
+          </label>
+        </div>
+
+        <div class="toggle-grid">
+          <label class="toggle-card"><input id="centerDotEnabled" type="checkbox" /><span>Center dot</span></label>
+          <label class="toggle-card"><input id="outlineEnabled" type="checkbox" /><span>Outline</span></label>
+          <label class="toggle-card"><input id="tStyleEnabled" type="checkbox" /><span>T-Style</span></label>
+          <label class="toggle-card"><input id="alphaEnabled" type="checkbox" checked /><span>Use alpha</span></label>
+          <label class="toggle-card"><input id="followRecoil" type="checkbox" checked /><span>Follow recoil</span></label>
+          <label class="toggle-card"><input id="deployedWeaponGapEnabled" type="checkbox" /><span>Weapon gap</span></label>
+        </div>
+
+        <details class="advanced">
+          <summary>Advanced settings</summary>
+          <div class="control-grid">
+            <label class="field">
+              <span class="field-label">Split distance</span>
+              <input id="splitDistance" class="input" type="number" min="0" max="7" step="1" value="3" />
+            </label>
+            <label class="field">
+              <span class="field-label">Fixed crosshair gap</span>
+              <input id="fixedCrosshairGap" class="input" type="number" min="-10" max="10" step="0.1" value="3" />
+            </label>
+          </div>
+        </details>
+      </section>
+
+      <section id="panel-pro" class="panel pro-panel tab-panel" hidden>
+        <div class="panel-header">
+          <div>
+            <p class="panel-eyebrow">Pro players</p>
+            <h2>Crosshairs</h2>
+          </div>
+        </div>
+
+        <label class="field pro-search-label">
+          <span class="field-label">Search player or team</span>
+          <input id="pro-search" class="input" type="search" placeholder="ZywOo, Vitality, Falcons…" />
+        </label>
+
+        <p id="pro-load-status" class="status" aria-live="polite"></p>
+        <div id="pro-groups" class="pro-groups"></div>
+      </section>
+
+      <section id="panel-autoexec" class="panel autoexec-panel tab-panel" hidden>
+        <div class="panel-header">
+          <div>
+            <p class="panel-eyebrow">Config builder</p>
+            <h2>Autoexec</h2>
+          </div>
+        </div>
+        <p class="autoexec-intro">
+          Build a complete <code>autoexec.cfg</code> with explanations. Crosshair values sync from the editor.
+        </p>
+        <div id="autoexec-settings" class="autoexec-settings"></div>
+      </section>
+
+      <section id="panel-autoexec-export" class="panel autoexec-export-panel tab-panel" hidden>
+        <div class="panel-header">
+          <div>
+            <p class="panel-eyebrow">Output</p>
+            <h2>autoexec.cfg</h2>
+          </div>
+          <div class="autoexec-actions">
+            <button id="copy-autoexec" type="button" class="btn btn-primary">Copy</button>
+            <button id="download-autoexec" type="button" class="btn btn-ghost">Download</button>
+          </div>
+        </div>
+        <textarea id="autoexec-output" class="code-block" readonly rows="24" spellcheck="false"></textarea>
+        <p class="hint">
+          Save to <code>game/csgo/cfg/autoexec.cfg</code> · Launch option: <code>+exec autoexec.cfg</code>
+        </p>
+      </section>
+
+      <section class="panel preview-panel">
+        <div class="panel-header">
+          <div>
+            <p class="panel-eyebrow">In-game test</p>
+            <h2>Preview</h2>
+          </div>
+        </div>
+
+        <div class="preview-toolbar">
+          <label class="field preview-map-field">
+            <span class="field-label">Map</span>
+            <select id="map-background" class="input"></select>
+          </label>
+          <button id="center-crosshair" type="button" class="btn btn-ghost">Center</button>
+        </div>
+
+        <div id="preview-frame" class="preview-frame">
+          <canvas id="preview" width="420" height="420" aria-label="Crosshair preview"></canvas>
+        </div>
+        <p class="preview-note">Drag to test visibility · Double-click to center</p>
+      </section>
+
+      <section class="panel export-panel">
+        <div class="panel-header">
+          <div>
+            <p class="panel-eyebrow">Share & apply</p>
+            <h2>Export</h2>
+          </div>
+        </div>
+
+        <div class="export-block">
+          <label for="import-code" class="field-label">Import share code</label>
+          <div class="import-row">
+            <input
+              id="import-code"
+              class="input mono"
+              type="text"
+              placeholder="CSGO-XXXXX-XXXXX-XXXXX-XXXXX-XXXXX"
+              spellcheck="false"
+            />
+            <button id="import-btn" type="button" class="btn btn-primary">Import</button>
+          </div>
+          <p id="import-status" class="status" aria-live="polite"></p>
+        </div>
+
+        <div class="export-block">
+          <div class="export-header">
+            <label for="share-code" class="field-label">Share code</label>
+            <button id="copy-share" type="button" class="btn btn-ghost btn-sm">Copy</button>
+          </div>
+          <textarea id="share-code" class="code-block" readonly rows="2"></textarea>
+        </div>
+
+        <div class="export-block">
+          <div class="export-header">
+            <label for="apply-command" class="field-label">Apply command</label>
+            <button id="copy-apply" type="button" class="btn btn-ghost btn-sm">Copy</button>
+          </div>
+          <textarea id="apply-command" class="code-block" readonly rows="2"></textarea>
+        </div>
+
+        <div class="export-block">
+          <div class="export-header">
+            <label for="console-commands" class="field-label">Console commands</label>
+            <button id="copy-console" type="button" class="btn btn-ghost btn-sm">Copy</button>
+          </div>
+          <textarea id="console-commands" class="code-block" readonly rows="8"></textarea>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>CS2 Crosshair Studio — open source</p>
+        <p class="footer-meta">Python core · GitHub Pages</p>
+      </div>
+    </footer>
+
+    <script type="module" src="js/app.js"></script>
+  </body>
+</html>
