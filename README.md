@@ -17,7 +17,7 @@ Crosshair studio for **Counter-Strike 2** with live preview, pro player configs,
 
 ## Live demo
 
-**https://aimsynccore.github.io/crosshair_generator/**
+**https://aimsynccore.github.io/cs2-crosshair-studio/**
 
 ## Local development (web)
 
@@ -69,7 +69,7 @@ python scripts/validate_pro_codes.py
 ## Project structure
 
 ```text
-crosshair_generator/
+cs2-crosshair-studio/
 ├── docs/                 # GitHub Pages site
 │   ├── index.html
 │   ├── css/style.css
